@@ -6,14 +6,14 @@ function PlayerController(){
   
 
 
-
+//button that moves players from playersData array to myPlayers and then updates the page accordingly.
   $('#roster').on('click', '.pickUpPlayer', function(){
     playerService.addPlayer(this.id)
     updateRoster(playerService.getPlayersData())
     updateMyTeam(playerService.getMyPlayers())
   })
   
-
+//button that moves players from the myPlayers array to playersData and then updates the page accordingly.
   $('#myTeam').on('click', '.dropPlayer', function(){
     console.log("hi")
     debugger
@@ -22,7 +22,7 @@ function PlayerController(){
     updateRoster(playerService.getPlayersData())
   })
 
-
+//function to update DOM for myTeam
   function updateMyTeam(arr){
     myTeamElem = $('#myTeam')
     var myTeamTemplate = ""
@@ -44,6 +44,7 @@ function PlayerController(){
     myTeamElem.append(myTeamTemplate);
   }
 
+//function to update DOM for roster
   function updateRoster(arr){
     var rosterElem = $('#roster')
     var nflTemplate = ''
