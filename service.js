@@ -44,7 +44,7 @@ function PlayerService(){
 
   
   playServ.getNFL = function loadPlayersData(callback){
-      var apiUrl = "http://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
+      var apiUrl = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
       //Lets check the localstorage for the data before making the call.
       //Ideally if a user has already used your site 
       //we can cut down on the load time by saving and pulling from localstorage 
@@ -57,7 +57,7 @@ function PlayerService(){
         //this will prevent the code below from ever executing
       }
 
-      var url = "http://bcw-getter.herokuapp.com/?url=";
+      var url = "https://bcw-getter.herokuapp.com/?url=";
       var endPointUrl = url + encodeURIComponent(apiUrl);
         $.getJSON(endPointUrl, function(data){
           playersData = data.body.players;
