@@ -16,7 +16,7 @@ function PlayerService(){
   }
 
   //This is returning my selected team
-  playServ.getMyPlayers = function getMyPlayers(){
+  playServ.getMyTeam = function getMyTeam(){
     return myPlayers
   }
   
@@ -27,6 +27,7 @@ function PlayerService(){
       if (playerToBeAdded.id == id) {
         myPlayers.push(playerToBeAdded)
         playersData.splice(i,1)
+        playServ.setMyTeam()
       }
     }
   }
@@ -38,25 +39,23 @@ function PlayerService(){
       if (playerToBeDropped.id == id) {
         myPlayers.splice(i,1)
         playersData.push(playerToBeDropped)
+        playServ.setMyTeam()
       }
     }
   }
 
   
   playServ.getNFL = function loadPlayersData(callback){
-      var apiUrl = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
-      //Lets check the localstorage for the data before making the call.
-      //Ideally if a user has already used your site 
-      //we can cut down on the load time by saving and pulling from localstorage 
-
       var localData = localStorage.getItem('playersData');
+
       if(localData){
         playersData = JSON.parse(localData);
         return callback(playersData); 
         //return will short-circuit the loadPlayersData function
         //this will prevent the code below from ever executing
-      }
-
+      }else{
+      
+      var apiUrl = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
       var url = "https://bcw-getter.herokuapp.com/?url=";
       var endPointUrl = url + encodeURIComponent(apiUrl);
         $.getJSON(endPointUrl, function(data){
@@ -66,8 +65,22 @@ function PlayerService(){
           localStorage.setItem('playersData', JSON.stringify(playersData))
           console.log('Finished Writing Player Data to localStorage')
           callback(playersData)
-
         });
-    }   
+      //Lets check the localstorage for the data before making the call.
+      //Ideally if a user has already used your site 
+      //we can cut down on the load time by saving and pulling from localstorage 
+      }
 
+
+    }   
+    playServ.setMyTeam = function setMyTeam(){
+      localStorage.setItem("myNFLTeam",JSON.stringify(myPlayers))
+    }
+    playServ.findMyTeam = function findMyTeam(callback){
+      var temp = localStorage.getItem('myNFLTeam')
+      if (temp) {
+        myPlayers = JSON.parse(temp)
+      }
+      callback(myPlayers)
+    }
 }

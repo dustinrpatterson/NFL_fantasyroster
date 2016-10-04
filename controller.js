@@ -10,7 +10,7 @@ function PlayerController(){
   $('#roster').on('click', '.pickUpPlayer', function(){
     playerService.addPlayer(this.id)
     updateRoster(playerService.getPlayersData())
-    updateMyTeam(playerService.getMyPlayers())
+    updateMyTeam(playerService.getMyTeam())
   })
   
 //button that moves players from the myPlayers array to playersData and then updates the page accordingly.
@@ -18,7 +18,7 @@ function PlayerController(){
     console.log("hi")
     debugger
     playerService.dropPlayer(this.id)
-    updateMyTeam(playerService.getMyPlayers())
+    updateMyTeam(playerService.getMyTeam())
     updateRoster(playerService.getPlayersData())
   })
 
@@ -72,7 +72,7 @@ function PlayerController(){
   
   
   playerService.getNFL(updateRoster)  
-  
+  playerService.findMyTeam(updateMyTeam)
   
   
   
