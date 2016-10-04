@@ -1,0 +1,41 @@
+.mainBody{
+    background-image: url(https://static.pexels.com/photos/54567/pexels-photo-54567.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size:100% 100%;
+}
+
+.header{
+    background:white;
+    text-align: center;
+}
+
+.player-image{
+    width: 100px;
+    border: 2px solid lightslategrey;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.card{
+    border:2px solid black;
+    width: 200px;
+    text-align:center;
+    padding:10px;
+    background:white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#myTeam{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#roster{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
