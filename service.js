@@ -44,6 +44,8 @@ function PlayerService(){
     }
   }
 
+
+
   
   playServ.getNFL = function loadPlayersData(callback){
       var localData = localStorage.getItem('playersData');
@@ -59,7 +61,7 @@ function PlayerService(){
       var url = "https://bcw-getter.herokuapp.com/?url=";
       var endPointUrl = url + encodeURIComponent(apiUrl);
         $.getJSON(endPointUrl, function(data){
-          playersData = data.body.players;
+          playersData = data.body.players;         
           console.log('Player Data Ready')
           console.log('Writing Player Data to localStorage')
           localStorage.setItem('playersData', JSON.stringify(playersData))
@@ -73,9 +75,11 @@ function PlayerService(){
 
 
     }   
+
     playServ.setMyTeam = function setMyTeam(){
       localStorage.setItem("myNFLTeam",JSON.stringify(myPlayers))
     }
+    
     playServ.findMyTeam = function findMyTeam(callback){
       var temp = localStorage.getItem('myNFLTeam')
       if (temp) {
@@ -83,4 +87,5 @@ function PlayerService(){
       }
       callback(myPlayers)
     }
+
 }

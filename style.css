@@ -1,14 +1,19 @@
-.mainBody{
+body{
     background-image: url(https://static.pexels.com/photos/54567/pexels-photo-54567.jpeg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size:100% 100%;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 .header{
-    background:white;
     text-align: center;
+    text-shadow: 0 0 6px white;
+}
+
+h1{
+    font-size: 80px;
 }
 
 .player-image{
@@ -26,15 +31,10 @@
     background:white;
     margin-top: 10px;
     margin-bottom: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
-#myTeam{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-#roster{
+.players{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
